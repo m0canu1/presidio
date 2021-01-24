@@ -146,7 +146,10 @@ jobs:
           condition: eq(variables['Build.Reason'], 'IndividualCI')
           inputs:
               action: Build services
-              dockerComposeFile: docker-compose.yml  
+              dockerComposeFile: docker-compose.yml
+              dockerComposeFileArgs: |
+                REGISTRY_NAME=$(REGISTRY_NAME)
+                TAG=$(TAG)
         - task: DockerCompose@0
           displayName: Push Presidio Images to ACR
           condition: eq(variables['Build.Reason'], 'IndividualCI')
