@@ -163,6 +163,7 @@ jobs:
         - 'SecurityAnalysis'
       pool:
         vmImage: 'ubuntu-16.04'
+      variables:
       ${{ if eq(variables['Build.Reason'], 'IndividualCI') }}:
         REGISTRY_NAME: '$(ACR_REGISTRY_NAME)'  
         TAG: '$(Build.BuildId)'  
